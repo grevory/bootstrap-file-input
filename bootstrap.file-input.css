@@ -1,0 +1,15 @@
+.file-input-wrapper {
+    overflow: hidden;
+    position: relative;    
+    cursor: pointer;
+    z-index: 1;
+}
+
+.file-input-wrapper input[type=file] {
+    position: absolute;
+    top: 0px;     
+    left: 0px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 99;
+}
