@@ -1,15 +1,19 @@
 .file-input-wrapper {
     overflow: hidden;
-    position: relative;    
+    position: relative;
     cursor: pointer;
     z-index: 1;
 }
 
 .file-input-wrapper input[type=file] {
     position: absolute;
-    top: 0px;     
-    left: 0px;
+    top: 0;
+    left: 0;
     cursor: pointer;
     opacity: 0;
     z-index: 99;
+}
+
+.file-input-name {
+    margin-left: 8px;
 }
