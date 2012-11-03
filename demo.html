@@ -1,25 +1,115 @@
 <!doctype html>
+<html lang="en">
 <meta charset="utf-8">
 <title>Demo for Bootstrap File Input styler</title>
+<meta name="description" content="Demo of Bootstrap File Input which standardizes all file inputs to look like Twitter Bootstrap buttons">
 <meta name="author" content="Gregory Pike">
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- Place favicon.ico and apple-touch-icon.png in the root of your domain and delete these references -->
+<!--[if IE]><![endif]--><!-- Used to speed CSS loading -->
+<link rel="stylesheet" href="http://necolas.github.com/normalize.css/2.0.1/normalize.css">
 <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
-<link rel="stylesheet" href="bootstrap.file-input.css?v=1.0">
+<link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet">
+<link rel="stylesheet" href="demo-style.css">
+<!-- <link rel="stylesheet" href="bootstrap.file-input.css?v=1.0"> -->
+    
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
 
-<style>
-body { padding-top: 100px; text-align: center; }
-</style>
+<body onload="prettyPrint()">
 
-<body>
+<!-- BEGIN DEMO -->
 
-<h2>Bootstrap - File Input</h2>
+<div class="container" ng-app="LocalStorageModule">
 
-<input type="file">
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Twitter Bootstrap File Input</a>
+    </div>
+  </div>
 
-<br><br>
+  <div class="hero-unit">
+    
+    <h1>Check it out</h1>
 
-<input type="file" title="Add file...">
+    <input type="file">
 
-</body>
+    <p>File input fields look differently in all browsers. It's a pain in the arse to design something that looks nice in all browsers and it sucks that support for this is not available in <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap.</a></p>
+    <p>This jQuery plugin is designed to make all file input fields look like standard Twitter Bootstrap buttons</p>
 
+  </div>
+
+  <h3>Why should you want this plugin?</h3>
+
+  <p>If you use Twitter Bootstrap then you know how awesome it is for styling a website with minimal effort.</p>
+
+  <ul>
+    <li>Standardize your file input with a button that looks the same in all browsers</li>
+    <li>Drop it in and walk away. No additional tags or attributes necessary.</li>
+  </ul>
+
+  <h3>Usage</h3>
+
+  <h6>Dependencies:</h6>
+  <ul>
+    <li><code>jQuery</code> <small><a href="http://jquery.com/">http://jquery.com/</a></small></li>
+    <li><code>Twitter Bootstrap</code> <small><a href="http://twitter.github.com/bootstrap/">http://twitter.github.com/bootstrap/</a></small></li>
+    <li><code>Bootstrap File Input</code> <small><a href="bootstrap.file-input.js">bootstrap.file-input.js</a></small></li>
+  </ul>
+
+  <h6>Examples</h6>
+
+  <input type="file" title="Search for a file to add">
+
+  <pre class="prettyprint">
+&lt;!-- Change the wording using a title tag --&gt;
+&lt;input type="file" title="Search for a file to add"&gt;</pre>
+  
+  <input type="file" data-bfi-disabled>
+
+  <pre class="prettyprint">
+&lt;!-- Disable the styling --&gt;
+&lt;input type="file" data-bfi-disabled&gt;</pre>
+
+  <h6>Compliance</h6>
+
+  <p>Tested in Chrome, Firefox, and Internet Explorer 8.</p>
+
+  <h3>API Access</h3>
+
+  <p>Attributes used on the file input elements</p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Attribute</th>
+        <th>Type</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>title</code></td>
+        <td><small>String</small></td>
+        <td>The text that will appear in the button</td>
+      </tr>
+      <tr>
+        <td><code>data-bfi-disabled</code></td>
+        <td><small>No value required</small></td>
+        <td>When this attributes exists it prevents the file input from being styled</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<!-- END DEMO -->
+    
+<!-- JAVASCRIPT -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
 <script src="bootstrap.file-input.js"></script>
+</body>
+</html>

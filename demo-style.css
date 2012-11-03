@@ -1,0 +1,20 @@
+body {
+	margin: 10px;
+}
+
+body .navbar .brand {
+	color: #FFFFFF;
+}
+
+.hero-unit h1 {
+  margin: 0 0 10px 0;
+}
+
+.hero-unit .file-input-wrapper {
+  margin: 0 0 10px 0;
+}
+
+pre.prettyprint {
+  padding: 10px;
+  margin-top: 10px;
+}
