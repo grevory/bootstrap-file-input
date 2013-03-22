@@ -28,11 +28,12 @@ $('input[type=file]').each(function(i,elem){
 
   // Start by getting the HTML of the input element.
   // Thanks for the tip http://stackoverflow.com/a/1299069
-  var input = $('<div>').append( $(elem).eq(0).clone() ).html();
+  var $elem = $(elem);
+  var input = $('<div>').append( $elem.eq(0).clone() ).html();
 
   // Now we're going to replace that input field with a Bootstrap button.
   // The input will actually still be there, it will just be float above and transparent (done with the CSS).
-  $(elem).replaceWith('<a class="file-input-wrapper btn">'+buttonWord+input+'</a>');
+  $elem.replaceWith('<a class="file-input-wrapper btn ' + $elem.attr('class') + '">'+buttonWord+input+'</a>');
 })
 // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
 // This is important because the in order to give the illusion that this is a button in FF we actually need to move the button from the file input under the cursor. Ugh.
