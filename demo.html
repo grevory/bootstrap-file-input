@@ -59,6 +59,13 @@
     <li><code>Bootstrap File Input</code> <small><a href="bootstrap.file-input.js">bootstrap.file-input.js</a></small></li>
   </ul>
 
+  <h6>Calling Bootstrap File Input</h6>
+
+  <pre class="prettyprint">
+$('input[type=file]').bootstrapFileInput();
+$('.file-inputs').bootstrapFileInput();
+  </pre>
+
   <h6>Examples</h6>
 
   <input type="file" title="Search for a file to add">
@@ -111,5 +118,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
 <script src="bootstrap.file-input.js"></script>
+<script>
+$(document).ready(function(){
+  $('input[type=file]').bootstrapFileInput();
+});
+</script>
 </body>
 </html>
