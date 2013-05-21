@@ -88,15 +88,24 @@ $.fn.bootstrapFileInput = function() {
 
     $('.file-input-wrapper input[type=file]').change(function(){
 
+      var fileName;
+      fileName = $(this).val();
+
+      if (fileName === _oldFileName) return;
+
       // Remove any previous file names
       $(this).parent().next('.file-input-name').remove();
-      if ($(this).prop('files').length > 1) {
-        $(this).parent().after('<span class="file-input-name">'+$(this)[0].files.length+' files</span>');
+      if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
+        fileName = $(this)[0].files.length+' files';
+        //$(this).parent().after('<span class="file-input-name">'+$(this)[0].files.length+' files</span>');
       }
       else {
-        $(this).parent().after('<span class="file-input-name">'+$(this).val().replace('C:\\fakepath\\','')+'</span>');
+        // var fakepath = 'C:\\fakepath\\';
+        // fileName = $(this).val().replace('C:\\fakepath\\','');
+        fileName = fileName.substring(fileName.lastIndexOf('\\')+1,fileName.length);
       }
 
+      $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
     });
 
   });
