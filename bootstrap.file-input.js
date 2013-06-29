@@ -41,12 +41,18 @@ $.fn.bootstrapFileInput = function() {
 
     // Now we're going to replace that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
-    $elem.replaceWith('<a class="file-input-wrapper btn' + className + '">'+buttonWord+input+'</a>');
+    //$elem.replaceWith('<a class="file-input-wrapper btn' + className + '">'+buttonWord+input+'</a>');
+    $elem.replaceWith('<div class="input-append"><input type="text"><button class="file-input-wrapper btn' + className + '" type="button">'+buttonWord+input+'</button></div>');
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
   // This is important because the in order to give the illusion that this is a button in FF we actually need to move the button from the file input under the cursor. Ugh.
   .promise().done( function(){
+
+    // Watch the text input for clicks. If the user clicks the text input it should open the file upload dialog as if they had clicked the button
+    $('.file-input-wrapper').parent().find('input[type=text]').unbind('click').bind('click',function(){
+      $(this).parent().find('input[type=file]').click();
+    });
 
     // As the cursor moves over our new Bootstrap button we need to adjust the position of the invisible file input Browse button to be under the cursor.
     // This gives us the pointer cursor that FF denies us
@@ -95,11 +101,8 @@ $.fn.bootstrapFileInput = function() {
       $(this).parent().next('.file-input-name').remove();
       if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
         fileName = $(this)[0].files.length+' files';
-        //$(this).parent().after('<span class="file-input-name">'+$(this)[0].files.length+' files</span>');
       }
-      else {
-        // var fakepath = 'C:\\fakepath\\';
-        // fileName = $(this).val().replace('C:\\fakepath\\','');
+      else {\
         fileName = fileName.substring(fileName.lastIndexOf('\\')+1,fileName.length);
       }
 
