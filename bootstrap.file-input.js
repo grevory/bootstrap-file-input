@@ -25,6 +25,13 @@ $.fn.bootstrapFileInput = function() {
 
     // Set the word to be displayed on the button
     var buttonWord = 'Browse';
+    // There are two ways to display the file input - input & button
+    var fileInputType = 'input';
+    var fileInputTypeOptions = ['input', 'button'];
+
+    if (fileInputTypeOptions.lastIndexOf($elem.attr('data-bfi-type')) >= 0) {
+      fileInputType = $elem.attr('data-bfi-type');
+    }
 
     if (typeof $elem.attr('title') != 'undefined') {
       buttonWord = $elem.attr('title');
@@ -37,12 +44,21 @@ $.fn.bootstrapFileInput = function() {
 
     if (!!$elem.attr('class')) {
       className = ' ' + $elem.attr('class');
+      
+      // Guess if the developer wants this to be a button
+      if (className.search(/btn\b/i)>=0) {
+        fileInputType = 'button';
+      }
     }
 
     // Now we're going to replace that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
     //$elem.replaceWith('<a class="file-input-wrapper btn' + className + '">'+buttonWord+input+'</a>');
-    $elem.replaceWith('<div class="input-append"><input type="text"><button class="file-input-wrapper btn' + className + '" type="button">'+buttonWord+input+'</button></div>');
+    if (fileInputType == "button") {
+      $elem.replaceWith('<a class="file-input-wrapper btn' + className + '">'+buttonWord+input+'</a>');
+    } else {
+      $elem.replaceWith('<div class="input-append"><input type="text"><button class="file-input-wrapper btn' + className + '" type="button">'+buttonWord+input+'</button></div>');
+    }
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
@@ -95,18 +111,31 @@ $.fn.bootstrapFileInput = function() {
     $('.file-input-wrapper input[type=file]').change(function(){
 
       var fileName;
-      fileName = $(this).val();
+      var fileInputType;
 
-      // Remove any previous file names
-      $(this).parent().next('.file-input-name').remove();
+      fileName = $(this).val();
+      fileInputType = 'button';
+
+      if ($(this).parents('.file-input-wrapper').siblings('input[type=text]').size()>0) {
+        fileInputType = 'input';
+      }
+
       if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
         fileName = $(this)[0].files.length+' files';
       }
-      else {\
+      else {
         fileName = fileName.substring(fileName.lastIndexOf('\\')+1,fileName.length);
       }
 
-      $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
+      if (fileInputType == "button") {
+
+        // Remove any previous file names
+        $(this).parent().next('.file-input-name').remove();
+        $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
+
+      } else {
+        $(this).parents('.file-input-wrapper').siblings('input[type=text]').val(fileName)
+      }
     });
 
   });
