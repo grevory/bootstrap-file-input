@@ -41,13 +41,16 @@ $.fn.bootstrapFileInput = function() {
     // Thanks for the tip http://stackoverflow.com/a/1299069
     var input = $('<div>').append( $elem.eq(0).clone() ).html();
     var className = '';
+    var classBtn = 'btn';
 
     if (!!$elem.attr('class')) {
-      className = ' ' + $elem.attr('class');
+      className = $elem.attr('class');
       
       // Guess if the developer wants this to be a button
-      if (className.search(/btn\b/i)>=0) {
+      if (className.search(/btn(\s|$)/i)>=0) {
+        console.log(className, $elem.attr('title'), className.search(/btn(\s|$)/i));
         fileInputType = 'button';
+        classBtn = '';
       }
     }
 
@@ -55,9 +58,9 @@ $.fn.bootstrapFileInput = function() {
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
     //$elem.replaceWith('<a class="file-input-wrapper btn' + className + '">'+buttonWord+input+'</a>');
     if (fileInputType == "button") {
-      $elem.replaceWith('<a class="file-input-wrapper btn' + className + '">'+buttonWord+input+'</a>');
+      $elem.replaceWith('<a class="file-input-wrapper btn ' + classBtn + ' ' + className + '">'+buttonWord+input+'</a>');
     } else {
-      $elem.replaceWith('<div class="input-append"><input type="text"><button class="file-input-wrapper btn' + className + '" type="button">'+buttonWord+input+'</button></div>');
+      $elem.replaceWith('<div class="input-append"><input type="text"><button class="file-input-wrapper btn ' + classBtn + ' ' + className + '" type="button">'+buttonWord+input+'</button></div>');
     }
   })
 

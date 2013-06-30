@@ -34,7 +34,7 @@
     
     <h1>Check it out</h1>
 
-    <input type="file" data-bfi-type="button">
+    <input type="file">
 
     <p>File input fields look differently in all browsers. It's a pain in the arse to design something that looks nice in all browsers and it sucks that support for this is not available in <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap.</a></p>
     <p>This jQuery plugin is designed to make all file input fields look like standard Twitter Bootstrap buttons</p>
@@ -68,11 +68,17 @@ $('.file-inputs').bootstrapFileInput();
 
   <h6>Examples</h6>
 
-  <input type="file" title="Search for a file to add">
+  <input type="file" title="Search for a file to add" data-bfi-type="button">
 
   <pre class="prettyprint">
 &lt;!-- Change the wording using a title tag --&gt;
-&lt;input type="file" title="Search for a file to add"&gt;</pre>
+&lt;input type="file" title="Search for a file to add" data-bfi-type="button"&gt;</pre>
+
+  <input type="file" title="Upload file" class="btn btn-primary">
+
+  <pre class="prettyprint">
+&lt;!-- Change the wording using a title tag --&gt;
+&lt;input type="file" title="Upload file" class="btn btn-primary"&gt;</pre>
   
   <input type="file" data-bfi-disabled>
 
@@ -101,6 +107,11 @@ $('.file-inputs').bootstrapFileInput();
         <td><code>title</code></td>
         <td><small>String</small></td>
         <td>The text that will appear in the button</td>
+      </tr>
+      <tr>
+        <td><code>data-bfi-type</code></td>
+        <td><small>String</small></td>
+        <td>Should be either "input" or "button". Will be "button" by default.</td>
       </tr>
       <tr>
         <td><code>data-bfi-disabled</code></td>
