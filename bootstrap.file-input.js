@@ -48,7 +48,6 @@ $.fn.bootstrapFileInput = function() {
       
       // Guess if the developer wants this to be a button
       if (className.search(/btn(\s|$)/i)>=0) {
-        console.log(className, $elem.attr('title'), className.search(/btn(\s|$)/i));
         fileInputType = 'button';
         classBtn = '';
       }
