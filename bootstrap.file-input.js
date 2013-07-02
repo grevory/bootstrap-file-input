@@ -142,6 +142,8 @@ $.fn.bootstrapFileInput = function() {
 
   });
 
+  return this;
+
 };
 
 // Add the styles before the first stylesheet
