@@ -86,7 +86,7 @@ $.fn.bootstrapFileInput = function() {
       });
     });
 
-    $('.file-input-wrapper input[type=file]').change(function(){
+    $('body').on('change', '.file-input-wrapper input[type=file]', function(){
 
       var fileName;
       fileName = $(this).val();
