@@ -81,6 +81,12 @@ $('.file-inputs').bootstrapFileInput();
   <pre class="prettyprint">
 &lt;!-- Disable the styling --&gt;
 &lt;input type="file" data-bfi-disabled&gt;</pre>
+  
+  <input type="file" data-filename-placement="inside">
+
+  <pre class="prettyprint">
+&lt;!-- Display filename inside the button instead of its label --&gt;
+&lt;input type="file" data-filename-placement="inside"&gt;</pre>
 
   <h6>Compliance</h6>
 
@@ -108,6 +114,16 @@ $('.file-inputs').bootstrapFileInput();
         <td><code>data-bfi-disabled</code></td>
         <td><small>No value required</small></td>
         <td>When this attributes exists it prevents the file input from being styled</td>
+      </tr>
+      <tr>
+       <td><code>data-filename-placement</td>
+       <td><small>String ['<em>outside</em>', '<em>inside</em>']<br/>Default: '<em>outside</em>'</small></td>
+       <td>Defines where the selected file name will be displayed :
+         <ul>
+           <li><em>outside</em> to place it right after the button (DEFAULT)</li>
+           <li><em>intside</em> to place it inside the button, instead of the title</li>
+         </ul> 
+       </td>
       </tr>
     </tbody>
   </table>
