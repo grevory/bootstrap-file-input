@@ -10,7 +10,6 @@
   <a class="btn">Browse</a>
 
 */
-$(function() {
 
 $.fn.bootstrapFileInput = function() {
 
@@ -107,6 +106,7 @@ $.fn.bootstrapFileInput = function() {
 
 };
 
+$(function() {
 // Add the styles before the first stylesheet
 // This ensures they can be easily overridden with developer styles
 var cssHtml = '<style>'+
