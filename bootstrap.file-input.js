@@ -38,7 +38,7 @@ $.fn.bootstrapFileInput = function() {
 
     // Now we're going to wrap that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
-    $elem.wrap('<a class="file-input-wrapper btn btn-default ' + className + '"></a>').parent().prepend(buttonWord);
+    $elem.wrap('<a class="file-input-wrapper btn btn-default ' + className + '"></a>').parent().prepend($('<span></span>').html(buttonWord));
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
@@ -100,7 +100,17 @@ $.fn.bootstrapFileInput = function() {
         fileName = fileName.substring(fileName.lastIndexOf('\\')+1,fileName.length);
       }
 
-      $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
+      var selectedFileNamePlacement = $(this).data('filename-placement') || 'outside';
+      if (selectedFileNamePlacement === 'inside') {
+        // Print the fileName inside
+        $(this).siblings('span').html(fileName);
+        $(this).attr('title', fileName);
+      } else if (selectedFileNamePlacement === 'outside') {
+        // Print the fileName aside (right after the the button)
+        $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
+      } else {
+        console.log('Error in bootstrap-file-input plugin : unknown placement [' + selectedFileNamePlacement + '] for selected filename');
+      }
     });
 
   });
