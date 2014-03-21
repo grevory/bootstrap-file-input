@@ -10,7 +10,7 @@
   <a class="btn">Browse</a>
 
 */
-$(function() {
+(function($) {
 
 $.fn.bootstrapFileInput = function() {
 
@@ -126,4 +126,4 @@ var cssHtml = '<style>'+
   '</style>';
 $('link[rel=stylesheet]').eq(0).before(cssHtml);
 
-});
+})(jQuery);
