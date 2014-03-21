@@ -92,24 +92,24 @@ $.fn.bootstrapFileInput = function() {
       $(this).parent().next('.file-input-name').remove();
       if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
         fileName = $(this)[0].files.length+' files';
-        //$(this).parent().after('<span class="file-input-name">'+$(this)[0].files.length+' files</span>');
       }
       else {
-        // var fakepath = 'C:\\fakepath\\';
-        // fileName = $(this).val().replace('C:\\fakepath\\','');
-        fileName = fileName.substring(fileName.lastIndexOf('\\')+1,fileName.length);
+        fileName = fileName.substring(fileName.lastIndexOf('\\') + 1, fileName.length);
       }
 
-      var selectedFileNamePlacement = $(this).data('filename-placement') || 'outside';
+      // Don't try to show the name if there is none
+      if (!fileName) {
+        return;
+      }
+
+      var selectedFileNamePlacement = $(this).data('filename-placement');
       if (selectedFileNamePlacement === 'inside') {
         // Print the fileName inside
         $(this).siblings('span').html(fileName);
         $(this).attr('title', fileName);
-      } else if (selectedFileNamePlacement === 'outside') {
+      } else {
         // Print the fileName aside (right after the the button)
         $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
-      } else {
-        console.log('Error in bootstrap-file-input plugin : unknown placement [' + selectedFileNamePlacement + '] for selected filename');
       }
     });
 
