@@ -33,23 +33,33 @@ $.fn.bootstrapFileInput = function() {
     }
 
     // Set the word to be displayed on the button
-    var buttonWord = 'Browse';
-
+    var buttonTitle = 'Browse';
     if (typeof $elem.attr('title') != 'undefined') {
-      buttonWord = $elem.attr('title');
+      buttonTitle = $elem.attr('title');
     }
 
-    var className = '';
+    // Set the default button class
+    var buttonClass = "btn btn-default";
+    if (typeof $elem.attr('data-button-class') != 'undefined') {
+      buttonClass = $elem.attr('data-button-class');
+    }
 
+    // Set the additional classes
+    var classes = [];
     if (!!$elem.attr('class')) {
-      className = ' ' + $elem.attr('class');
+      classes.append($elem.attr('class'));
     }
+    classes = classes.join(" ");
+
+    // Set the glyphicon
+    var glyphicon = $elem.attr("data-icon-class");
 
     // Now we're going to wrap that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
-    var buttonTextSpan = $("<span/>").html(buttonWord);
-    var fileInputWrapper = $("<a/>").addClass("file-input-wrapper btn btn-default").addClass(className);
-    $elem.wrap(fileInputWrapper).parent().prepend(buttonTextSpan);
+    var glyphiconSpan = $("<span/>").addClass(glyphicon);
+    var buttonTextSpan = $("<span/>").html(buttonTitle);
+    var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes);
+    $elem.wrap(fileInputWrapper).parent().prepend(glyphiconSpan.wrap(buttonTextSpan);
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
