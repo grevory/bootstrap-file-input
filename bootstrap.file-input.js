@@ -59,7 +59,7 @@ $.fn.bootstrapFileInput = function() {
     var glyphiconSpan = $("<span/>").addClass(glyphicon);
     var buttonTextSpan = $("<span/>").html(buttonTitle);
     var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes);
-    $elem.wrap(fileInputWrapper).parent().prepend(glyphiconSpan.wrap(buttonTextSpan);
+    $elem.wrap(fileInputWrapper).parent().prepend(glyphiconSpan.wrap(buttonTextSpan));
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
