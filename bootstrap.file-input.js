@@ -47,7 +47,7 @@ $.fn.bootstrapFileInput = function() {
     // Set the additional classes
     var classes = [];
     if (!!$elem.attr('class')) {
-      classes.append($elem.attr('class'));
+      classes.push($elem.attr('class'));
     }
     classes = classes.join(" ");
 
