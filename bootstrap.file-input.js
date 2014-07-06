@@ -57,9 +57,11 @@ $.fn.bootstrapFileInput = function() {
     // Now we're going to wrap that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
     var glyphiconSpan = $("<span/>").addClass(glyphicon);
-    var buttonTextSpan = $("<span/>").html(buttonTitle);
+    var buttonTextSpan = $("<span/>").text(buttonTitle);
+    var buttonElmement = $("<span/>").append(glyphiconSpan).append(buttonTextSpan);
     var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes);
-    $elem.wrap(fileInputWrapper).parent().prepend(glyphiconSpan.wrap(buttonTextSpan));
+
+    $elem.wrap(fileInputWrapper).parent().prepend(buttonElmement);
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
