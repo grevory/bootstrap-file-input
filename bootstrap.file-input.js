@@ -59,7 +59,7 @@ $.fn.bootstrapFileInput = function() {
     var glyphiconSpan = $("<span/>").addClass(glyphicon);
     var buttonTextSpan = $("<span/>").text(buttonTitle);
     var buttonElmement = $("<span/>").append(glyphiconSpan).append(buttonTextSpan);
-    var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes);
+    var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes).addClass(buttonClass);
 
     $elem.wrap(fileInputWrapper).parent().prepend(buttonElmement);
   })
