@@ -56,8 +56,9 @@ $.fn.bootstrapFileInput = function() {
 
     // Now we're going to wrap that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
+    // Text is escaped before put into the button
     var glyphiconSpan = $("<span/>").addClass(glyphicon);
-    var buttonTextSpan = $("<span/>").text(buttonTitle);
+    var buttonTextSpan = $("<span/>").text(buttonTitle).css("marigin-left", "8px");
     var buttonElmement = $("<span/>").append(glyphiconSpan).append(buttonTextSpan);
     var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes).addClass(buttonClass);
 
