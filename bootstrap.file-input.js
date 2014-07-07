@@ -40,8 +40,8 @@ $.fn.bootstrapFileInput = function() {
 
     // Set the default button class
     var buttonClass = "btn btn-default";
-    if (typeof $elem.attr('data-button-class') != 'undefined') {
-      buttonClass = $elem.attr('data-button-class');
+    if (typeof $elem.attr('data-btn-class') != 'undefined') {
+      buttonClass = $elem.attr('data-btn-class');
     }
 
     // Set the additional classes
@@ -58,7 +58,7 @@ $.fn.bootstrapFileInput = function() {
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
     // Text is escaped before put into the button
     var glyphiconSpan = $("<span/>").addClass(glyphicon);
-    var buttonTextSpan = $("<span/>").text(buttonTitle).css("marigin-left", "8px");
+    var buttonTextSpan = $("<span/>").text(buttonTitle).addClass("file-input-btn-title");
     var buttonElmement = $("<span/>").append(glyphiconSpan).append(buttonTextSpan);
     var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes).addClass(buttonClass);
 
@@ -148,6 +148,7 @@ var cssHtml = '<style>'+
   '.file-input-wrapper { overflow: hidden; position: relative; cursor: pointer; z-index: 1; }'+
   '.file-input-wrapper input[type=file], .file-input-wrapper input[type=file]:focus, .file-input-wrapper input[type=file]:hover { position: absolute; top: 0; left: 0; cursor: pointer; opacity: 0; filter: alpha(opacity=0); z-index: 99; outline: 0; }'+
   '.file-input-name { margin-left: 8px; }'+
+  '.file-input-btn-title { margin-left: 8px; }'+
   '</style>';
 $('link[rel=stylesheet]').eq(0).before(cssHtml);
 
