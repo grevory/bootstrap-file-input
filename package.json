@@ -1,0 +1,29 @@
+{
+  "name": "bootstrap-file-input",
+  "version": "1.0.0",
+  "description": "Check out the demo of Bootstrap file input at http://gregpike.net/demos/bootstrap-file-input/demo.html",
+  "main": "bootstrap.file-input.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandomoreirame/bootstrap-file-input.git"
+  },
+  "author": "Gregory Pike",
+  "keywords": [
+    "bootstrap",
+    "jquery",
+    "input",
+    "image",
+    "upload"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nandomoreirame/bootstrap-file-input/issues"
+  },
+  "homepage": "https://github.com/nandomoreirame/bootstrap-file-input#readme",
+  "dependencies": {
+    "jquery": "~2.2.4"
+  }
+}
