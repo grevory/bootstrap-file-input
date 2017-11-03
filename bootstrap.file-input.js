@@ -100,7 +100,11 @@ $.fn.bootstrapFileInput = function() {
       // Remove any previous file names
       $(this).parent().next('.file-input-name').remove();
       if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
-        fileName = $(this)[0].files.length+' files';
+        var filesLabel = $(this).data('files-label');
+        if (!filesLabel) {
+          filesLabel = 'files';
+        }
+        fileName = $(this)[0].files.length+' '+filesLabel;
       }
       else {
         fileName = fileName.substring(fileName.lastIndexOf('\\') + 1, fileName.length);
