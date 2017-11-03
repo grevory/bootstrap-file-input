@@ -56,7 +56,7 @@ $.fn.bootstrapFileInput = function() {
 
     // As the cursor moves over our new Bootstrap button we need to adjust the position of the invisible file input Browse button to be under the cursor.
     // This gives us the pointer cursor that FF denies us
-    $('.file-input-wrapper').mousemove(function(cursor) {
+    $('.file-input-wrapper').on('mousemove', function(cursor) {
 
       var input, wrapper,
         wrapperX, wrapperY,
