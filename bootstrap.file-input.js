@@ -33,21 +33,36 @@ $.fn.bootstrapFileInput = function() {
     }
 
     // Set the word to be displayed on the button
-    var buttonWord = 'Browse';
-
+    var buttonTitle = 'Browse';
     if (typeof $elem.attr('title') != 'undefined') {
-      buttonWord = $elem.attr('title');
+      buttonTitle = $elem.attr('title');
     }
 
-    var className = '';
+    // Set the default button class
+    var buttonClass = "btn btn-default";
+    if (typeof $elem.attr('data-btn-class') != 'undefined') {
+      buttonClass = $elem.attr('data-btn-class');
+    }
 
+    // Set the additional classes
+    var classes = [];
     if (!!$elem.attr('class')) {
-      className = ' ' + $elem.attr('class');
+      classes.push($elem.attr('class'));
     }
+    classes = classes.join(" ");
+
+    // Set the glyphicon
+    var glyphicon = $elem.attr("data-icon-class");
 
     // Now we're going to wrap that input field with a Bootstrap button.
     // The input will actually still be there, it will just be float above and transparent (done with the CSS).
-    $elem.wrap('<a class="file-input-wrapper btn btn-default ' + className + '"></a>').parent().prepend($('<span></span>').html(buttonWord));
+    // Text is escaped before put into the button
+    var glyphiconSpan = $("<span/>").addClass(glyphicon);
+    var buttonTextSpan = $("<span/>").text(buttonTitle).addClass("file-input-btn-title");
+    var buttonElmement = $("<span/>").append(glyphiconSpan).append(buttonTextSpan);
+    var fileInputWrapper = $("<a/>").addClass("file-input-wrapper").addClass(classes).addClass(buttonClass);
+
+    $elem.wrap(fileInputWrapper).parent().prepend(buttonElmement);
   })
 
   // After we have found all of the file inputs let's apply a listener for tracking the mouse movement.
@@ -122,7 +137,8 @@ $.fn.bootstrapFileInput = function() {
         $(this).attr('title', fileName);
       } else {
         // Print the fileName aside (right after the the button)
-        $(this).parent().after('<span class="file-input-name">'+fileName+'</span>');
+        var fileNameSpan = $("<span/>").addClass("file-input-name").text(fileName);
+        $(this).parent().after(fileNameSpan);
       }
     });
 
@@ -136,6 +152,7 @@ var cssHtml = '<style>'+
   '.file-input-wrapper { overflow: hidden; position: relative; cursor: pointer; z-index: 1; }'+
   '.file-input-wrapper input[type=file], .file-input-wrapper input[type=file]:focus, .file-input-wrapper input[type=file]:hover { position: absolute; top: 0; left: 0; cursor: pointer; opacity: 0; filter: alpha(opacity=0); z-index: 99; outline: 0; }'+
   '.file-input-name { margin-left: 8px; }'+
+  '.file-input-btn-title { margin-left: 8px; }'+
   '</style>';
 $('link[rel=stylesheet]').eq(0).before(cssHtml);
 
