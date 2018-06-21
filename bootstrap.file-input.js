@@ -96,7 +96,8 @@ $.fn.bootstrapFileInput = function() {
 
       var fileName;
       fileName = $(this).val();
-
+      $(this).val(null);
+      
       // Remove any previous file names
       $(this).parent().next('.file-input-name').remove();
       if (!!$(this).prop('files') && $(this).prop('files').length > 1) {
